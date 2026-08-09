@@ -1,0 +1,12 @@
+# SQL Server backup and data files
+*.bak
+*.trn
+*.mdf
+*.ndf
+*.ldf
+
+# Generated logs and local settings
+*.log
+.env
+.vscode/
+.idea/
