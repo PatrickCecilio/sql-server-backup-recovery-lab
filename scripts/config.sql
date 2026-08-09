@@ -1,0 +1,7 @@
+:setvar LabDatabase "DBARecoveryLab"
+:setvar RestoreDatabase "DBARecoveryLab_Restore"
+:setvar BackupDirectory "C:\SQLBackups\DBARecoveryLab"
+:setvar FullBackup "C:\SQLBackups\DBARecoveryLab\DBARecoveryLab_full.bak"
+:setvar DifferentialBackup "C:\SQLBackups\DBARecoveryLab\DBARecoveryLab_diff.bak"
+:setvar FirstLogBackup "C:\SQLBackups\DBARecoveryLab\DBARecoveryLab_log_01.trn"
+:setvar IncidentLogBackup "C:\SQLBackups\DBARecoveryLab\DBARecoveryLab_log_incident.trn"
