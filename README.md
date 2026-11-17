@@ -86,6 +86,17 @@ O caminho padrão é `C:\SQLBackups\DBARecoveryLab`. Em SQL Server no Linux, aju
 
 ## Execução
 
+### Impacto por etapa
+
+| Nível | Scripts | Impacto |
+|---|---|---|
+| D0 — consulta | `00-preflight.sql`, `07-validate-recovery.sql`, `08-audit-history.sql` | Inspeção de ambiente, dados e histórico. |
+| D1 — mudança em laboratório | `01-create-lab.sql`, `02-full-backup.sql`, `03-differential-backup.sql`, `04-log-backup.sql` | Cria bases e arquivos de backup isolados. |
+| D2 — recuperação controlada | `06-point-in-time-restore.sql` | Restaura a cadeia em base alternativa; requer nomes, caminhos, espaço e horário `STOPAT` corretos. |
+| D3 — remoção ou perda simulada | `05-simulate-incident.sql`, `99-cleanup.sql` | Exclui dado de teste ou remove as bases do laboratório. Execute apenas no ambiente isolado previsto. |
+
+Confirme instância, nomes das bases e diretório de backup antes de executar qualquer script. O índice de [risco operacional da biblioteca DBA](https://github.com/PatrickCecilio/biblioteca-tecnica-dba/blob/main/COMANDOS-POR-RISCO.md) detalha a escala D0–D3.
+
 Execute os arquivos na ordem abaixo. Cada script inclui a configuração central por meio de SQLCMD.
 
 ```powershell
