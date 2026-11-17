@@ -125,6 +125,17 @@ O procedimento detalhado está em [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
 
 O script [`07-validate-recovery.sql`](scripts/07-validate-recovery.sql) interrompe a execução com erro caso essas condições não sejam atendidas.
 
+### Estado das evidências
+
+| Item | Estado publicado |
+|---|---|
+| Sequência de backup, incidente e restore | Scripts e [runbook](docs/RUNBOOK.md) versionados. |
+| Validação do repositório | Teste estático em PowerShell e GitHub Actions; não conecta ao SQL Server. |
+| Resultado funcional esperado | Pedido `1005` ausente na base afetada e presente na base restaurada; definido pelos scripts, ainda sem log de execução publicado. |
+| RPO e RTO medidos | Não publicados. Não inferir valores a partir do resultado esperado. |
+
+Use o [registro de evidências](docs/EVIDENCIAS.md) para documentar uma execução real em instância isolada, com versão, horários, backupsets, `STOPAT`, resultado de `07-validate-recovery.sql` e métricas medidas.
+
 ## Decisões de segurança operacional
 
 - o preflight falha se alguma das duas bases do laboratório já existir;
